@@ -54,7 +54,20 @@ function getSavedMsgList(items,promotions) {
 }
 //计算满减的优惠金额
 function getSavedMsgByManjian(items,promotion) {
-
+  let promotionType=promotion.type;
+  let total=0;
+  let saved=0;
+  for (let item of items) {
+    total+=item.subtotal;
+  }
+  if (total>=30) {
+    saved=6;
+  }
+  let savedMsg={
+    promotionType,
+    saved
+  };
+  console.info(savedMsg);
   return savedMsg;
 }
 //计算半价商品的优惠金额

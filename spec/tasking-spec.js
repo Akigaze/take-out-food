@@ -83,7 +83,7 @@ describe('Tasking #4', function () {
     let items = countItems(inputs);
     addItemDetial(items,loadAllItems());
     calSubtotal(items);
-    const promotion=loadPromotions()[1];
+    const promotion=loadPromotions()[0];
     let result=getSavedMsgByManjian(items,promotion);
 
     let expected = {promotionType:'满30减6元',saved:6};
