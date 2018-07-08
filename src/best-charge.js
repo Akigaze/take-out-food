@@ -1,9 +1,25 @@
 function bestCharge(selectedItems) {
-  return /*TODO*/;
+  const allItems=loadAllItems();
+  const promotions=loadPromotions();
+
+  let items=countItems(selectedItems);
+
+
+
+
 }
 //统计菜品的数量
 function countItems(selectedItems){
-
+  let items=[];
+  for (let itemId of selectedItems) {
+    let tempArray=itemId.split('x');
+    let item={
+      id: tempArray[0].trim(),
+      count: parseInt(tempArray[1].trim())
+    }
+    items.push(item);
+  }
+  console.info(items);
   return items;
 }
 //添加菜品详情
