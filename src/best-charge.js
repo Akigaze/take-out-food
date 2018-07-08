@@ -67,6 +67,7 @@ function getPromotionMsg(items,promotions) {
   console.info(promotionMsg);
   return promotionMsg;
 }
+//计算一种优惠方式的优惠金额
 function getSavedMsg(items,promotion) {
   let savedMsg=null;
   switch (promotion.type) {
@@ -81,16 +82,16 @@ function getSavedMsg(items,promotion) {
 }
 //计算每种优惠方式的优惠金额
 function getSavedMsgList(items,promotions) {
-  let saveMsgList=promotions.map((promotion)=>{
+  let savedMsgList=promotions.map((promotion)=>{
     return getSavedMsg(items,promotion);
   });
 
   // for (let promotion of promotions) {
   //   let savedMsg=getSavedMsg(items,promotion)
-  //   saveMsgList.push(savedMsg);
+  //   savedMsgList.push(savedMsg);
   // }
-  console.info(saveMsgList);
-  return saveMsgList;
+  console.info(savedMsgList);
+  return savedMsgList;
 }
 //计算满减的优惠金额
 function getSavedMsgByManjian(items,promotion) {
@@ -153,12 +154,18 @@ function isBanjiaItem(item,promotionItems) {
 function selectTheBestPromotion(savedMsgList) {
   let promotionMsg=null;
   let bestSaved=0;
-  for (let i = 0; i < savedMsgList.length; i++) {
-    if(savedMsgList[i].saved>bestSaved){
-      bestSaved=savedMsgList[i].saved;
-      promotionMsg=savedMsgList[i];
+  savedMsgList.forEach((savedMsg)=>{
+    if(savedMsg.saved>bestSaved){
+      bestSaved=savedMsg.saved;
+      promotionMsg=savedMsg;
     }
-  }
+  });
+
+  // savedMsgList.sort((e1,e2)=>{
+  //   return e2.saved-e1.saved;
+  // });
+  // let promotionMsg=savedMsgList[0].saved===0?null:savedMsgList[0];
+
   return promotionMsg;
 }
 //计算订单总价
