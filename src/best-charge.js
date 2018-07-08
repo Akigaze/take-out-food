@@ -4,7 +4,7 @@ function bestCharge(selectedItems) {
 
   let items=countItems(selectedItems);
   addItemDetial(items,allItems);
-
+  calSubtotal(items);
 
 
 
@@ -38,7 +38,10 @@ function addItemDetial(items,allItems) {
 }
 //计算商品小计
 function calSubtotal(items) {
-
+  items.forEach((item)=>{
+    item.subtotal=item.count*item.price;
+  });
+  console.info(items);
 }
 //计算优惠金额
 function getPromotionMsg(items,promotions) {
