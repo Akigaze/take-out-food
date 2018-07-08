@@ -8,6 +8,7 @@ function bestCharge(selectedItems) {
   let promotionMsg=getPromotionMsg(items,promotions);
   let total=calTotal(items,promotionMsg);
   let order=generateOrder(items,promotionMsg,total);
+  return outputOrder(order);
 }
 //统计菜品的数量
 function countItems(selectedItems){
@@ -153,6 +154,18 @@ function generateOrder(items,promotionMsg,total) {
 }
 //输出订单
 function outputOrder(order) {
-
-  console.log(orderString);
+  let orderString="============= 订餐明细 =============\n";
+  order.items.forEach((item)=>{
+    orderString+=item.name+" x "+item.count+" = "+item.subtotal+"元\n";
+  });
+  orderString+="-----------------------------------\n";
+  if (order.promotionMsg!==null) {
+    orderString+="使用优惠:\n";
+    orderString+=order.promotionMsg.promotionType+"，省"+order.promotionMsg.saved+"元\n";
+    orderString+="-----------------------------------\n";
+  }
+  orderString+="总计："+order.total+"元\n";
+  orderString+="===================================";
+  console.info(orderString)
+  return orderString;
 }
