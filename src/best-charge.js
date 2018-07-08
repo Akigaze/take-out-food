@@ -12,15 +12,23 @@ function bestCharge(selectedItems) {
 }
 //统计菜品的数量
 function countItems(selectedItems){
-  let items=[];
-  for (let itemId of selectedItems) {
-    let tempArray=itemId.split('x');
-    let item={
-      id: tempArray[0].trim(),
-      count: parseInt(tempArray[1].trim())
+  let items=selectedItems.map((itemId)=>{
+    let temp=itemId.split('x');
+    return {
+      id: temp[0].trim(),
+      count: parseInt(temp[1].trim())
     }
-    items.push(item);
-  }
+  });
+
+  // for (let itemId of selectedItems) {
+  //   let tempArray=itemId.split('x');
+  //   let item={
+  //     id: tempArray[0].trim(),
+  //     count: parseInt(tempArray[1].trim())
+  //   }
+  //   items.push(item);
+  // }
+
   console.info(items);
   return items;
 }
