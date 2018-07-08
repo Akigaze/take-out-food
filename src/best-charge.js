@@ -35,14 +35,20 @@ function countItems(selectedItems){
 //添加菜品详情
 function addItemDetial(items,allItems) {
   for (let selectItem of items) {
-    for (let item of allItems) {
-      if (selectItem.id===item.id) {
-        selectItem.name=item.name;
-        selectItem.price=item.price;
-        break;
-      }
-    }
+    let {name,price}=allItems.find((item)=>{
+      return selectItem.id===item.id;
+    });
+    selectItem.name=name;
+    selectItem.price=price;
   }
+  //   for (let item of allItems) {
+  //     if (selectItem.id===item.id) {
+  //       selectItem.name=item.name;
+  //       selectItem.price=item.price;
+  //       break;
+  //     }
+  //   }
+  // }
   console.info(items);
 }
 //计算商品小计
