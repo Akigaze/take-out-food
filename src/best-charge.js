@@ -114,7 +114,9 @@ function getSavedMsgByBanjia(items,promotion) {
       saved+=item.subtotal/2;
     }
   }
-  promotionType+=temp.substring(0,temp.length-1)+")";
+  //promotionType+=temp.substring(0,temp.length-1)+")";
+
+  promotionType+=temp.replace(/，$/g,")");
   let savedMsg={
     promotionType,
     saved
@@ -124,6 +126,7 @@ function getSavedMsgByBanjia(items,promotion) {
 }
 //判断是否是半价商品
 function isBanjiaItem(item,promotionItems) {
+
   let banjia = promotionItems.some((id)=>{
     return item.id===id;
   });
