@@ -3,6 +3,7 @@ function bestCharge(selectedItems) {
   const promotions=loadPromotions();
 
   let items=countItems(selectedItems);
+  addItemDetial(items,allItems);
 
 
 
@@ -24,7 +25,16 @@ function countItems(selectedItems){
 }
 //添加菜品详情
 function addItemDetial(items,allItems) {
-
+  for (let selectItem of items) {
+    for (let item of allItems) {
+      if (selectItem.id===item.id) {
+        selectItem.name=item.name;
+        selectItem.price=item.price;
+        break;
+      }
+    }
+  }
+  console.info(items);
 }
 //计算商品小计
 function calSubtotal(items) {

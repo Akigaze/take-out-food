@@ -26,7 +26,7 @@ describe('Tasking #2', function () {
       {id:'ITEM0022',count:1,name:'凉皮',price:8.00}
     ];
 
-    expect(result).toEqual(items);
+    expect(items).toEqual(expected);
   });
 });
 
