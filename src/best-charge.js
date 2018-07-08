@@ -5,7 +5,7 @@ function bestCharge(selectedItems) {
   let items=countItems(selectedItems);
   addItemDetial(items,allItems);
   calSubtotal(items);
-
+  let promotionMsg=getPromotionMsg(items,promotions);
 
 }
 //统计菜品的数量
@@ -130,7 +130,12 @@ function selectTheBestPromotion(savedMsgList) {
 }
 //计算订单总价
 function calTotal(items,promotionMsg) {
-
+  let total=0;
+  items.forEach((item)=>{
+    total+=item.subtotal;
+  });
+  total-=promotionMsg.saved;
+  console.info(total);
   return total;
 }
 //封装订单对象

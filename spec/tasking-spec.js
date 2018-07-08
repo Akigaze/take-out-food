@@ -115,7 +115,7 @@ describe('Tasking #5', function () {
     let promotionMsg=getPromotionMsg(items,loadPromotions());
     let result=calTotal(items,promotionMsg);
 
-    let expected = {promotionType:'满30减6元',saved:6};
+    let expected = 26;
 
     expect(result).toEqual(expected);
   });
