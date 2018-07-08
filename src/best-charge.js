@@ -6,7 +6,8 @@ function bestCharge(selectedItems) {
   addItemDetial(items,allItems);
   calSubtotal(items);
   let promotionMsg=getPromotionMsg(items,promotions);
-
+  let total=calTotal(items,promotionMsg);
+  let order=generateOrder(items,promotionMsg,total);
 }
 //统计菜品的数量
 function countItems(selectedItems){
@@ -118,7 +119,7 @@ function isBanjiaItem(item,promotionItems) {
 }
 //选出最优的优惠
 function selectTheBestPromotion(savedMsgList) {
-  let promotionMsg={};
+  let promotionMsg=null;
   let bestSaved=0;
   for (let i = 0; i < savedMsgList.length; i++) {
     if(savedMsgList[i].saved>bestSaved){
@@ -134,13 +135,20 @@ function calTotal(items,promotionMsg) {
   items.forEach((item)=>{
     total+=item.subtotal;
   });
-  total-=promotionMsg.saved;
+  if (promotionMsg!==null) {
+    total-=promotionMsg.saved;
+  }
   console.info(total);
   return total;
 }
 //封装订单对象
 function generateOrder(items,promotionMsg,total) {
-
+  let order={
+    items,
+    promotionMsg,
+    total
+  };
+  console.info(order);
   return order;
 }
 //输出订单
