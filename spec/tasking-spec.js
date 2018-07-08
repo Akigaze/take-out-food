@@ -118,6 +118,5 @@ describe('Tasking #5', function () {
     let expected = {promotionType:'满30减6元',saved:6};
 
     expect(result).toEqual(expected);
-    }
   });
 });
