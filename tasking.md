@@ -38,12 +38,12 @@ output:
       saved: Number
     }
 >
-#4.1 计算每种优惠方式的优惠金额 getPromotionMsgList
+#4.1 计算每种优惠方式的优惠金额 getSaveDMsgList
 input:
     items
     promotions
 output:
-    promotionMsgList: [{
+    savedMsgList: [{
       promotionType: String
       saved: Number
     }]
@@ -81,7 +81,7 @@ output:
 >
 #4.2 选出最优的优惠 selectTheBestPromotion
 input:
-    promotionMsgList
+    savedMsgList
 output:
     promotionMsg
 

@@ -7,7 +7,6 @@ function bestCharge(selectedItems) {
   calSubtotal(items);
 
 
-
 }
 //统计菜品的数量
 function countItems(selectedItems){
@@ -49,9 +48,9 @@ function getPromotionMsg(items,promotions) {
   return promotionMsg;
 }
 //计算每种优惠方式的优惠金额
-function getPromotionMsgList(items,promotions) {
+function getSavedMsgList(items,promotions) {
 
-  return promotionMsgList;
+  return saveMsgList;
 }
 //计算满减的优惠金额
 function getSavedMsgByManjian(items,promotion) {
@@ -65,11 +64,18 @@ function getSavedMsgByBanjia(items,promotion) {
 }
 //判断是否是半价商品
 function isBanjiaItem(item,promotionItems) {
-
+  let banjia = false;
+  for (let promotionItem of promotionItems) {
+    if (item.id===promotionItem) {
+      banjia=true;
+      break;
+    }
+  }
+  console.info(banjia);
   return banjia;
 }
 //选出最优的优惠
-function selectTheBestPromotion(promotionMsgList) {
+function selectTheBestPromotion(savedMsgList) {
 
   return promotionMsg;
 }
