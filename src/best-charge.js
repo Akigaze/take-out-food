@@ -59,7 +59,21 @@ function getSavedMsgByManjian(items,promotion) {
 }
 //计算半价商品的优惠金额
 function getSavedMsgByBanjia(items,promotion) {
-
+  let promotionType=promotion.type;
+  let temp="("
+  let saved=0;
+  for (let item of items) {
+    if (isBanjiaItem(item,promotion.items)) {
+      temp+=(item.name+"，");
+      saved+=item.subtotal/2;
+    }
+  }
+  promotionType+=temp.substring(0,temp.length-1)+")";
+  let savedMsg={
+    promotionType,
+    saved
+  };
+  console.info(savedMsg);
   return savedMsg;
 }
 //判断是否是半价商品
