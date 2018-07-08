@@ -67,21 +67,28 @@ function getPromotionMsg(items,promotions) {
   console.info(promotionMsg);
   return promotionMsg;
 }
+function getSavedMsg(items,promotion) {
+  let savedMsg=null;
+  switch (promotion.type) {
+    case "满30减6元":
+      savedMsg=getSavedMsgByManjian(items,promotion);
+      break;
+    case "指定菜品半价":
+      savedMsg=getSavedMsgByBanjia(items,promotion)
+      break;
+  }
+  return savedMsg;
+}
 //计算每种优惠方式的优惠金额
 function getSavedMsgList(items,promotions) {
-  let saveMsgList=[]
-  for (let promotion of promotions) {
-    let savedMsg=null;
-    switch (promotion.type) {
-      case "满30减6元":
-        savedMsg=getSavedMsgByManjian(items,promotion);
-        break;
-      case "指定菜品半价":
-        savedMsg=getSavedMsgByBanjia(items,promotion)
-        break;
-    }
-    saveMsgList.push(savedMsg);
-  }
+  let saveMsgList=promotions.map((promotion)=>{
+    return getSavedMsg(items,promotion);
+  });
+
+  // for (let promotion of promotions) {
+  //   let savedMsg=getSavedMsg(items,promotion)
+  //   saveMsgList.push(savedMsg);
+  // }
   console.info(saveMsgList);
   return saveMsgList;
 }
@@ -96,7 +103,6 @@ function getSavedMsgByManjian(items,promotion) {
   // for (let item of items) {
   //   total+=item.subtotal;
   // }
-
 
   let savedMsg={
     promotionType,
