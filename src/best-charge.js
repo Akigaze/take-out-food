@@ -88,14 +88,16 @@ function getSavedMsgList(items,promotions) {
 //计算满减的优惠金额
 function getSavedMsgByManjian(items,promotion) {
   let promotionType=promotion.type;
-  let total=0;
-  let saved=0;
-  for (let item of items) {
-    total+=item.subtotal;
-  }
-  if (total>=30) {
-    saved=6;
-  }
+  let total=items.reduce((prev,cur)=>{
+    return prev.subtotal+cur.subtotal;
+  });
+  let saved=(total>=30?6:0);
+
+  // for (let item of items) {
+  //   total+=item.subtotal;
+  // }
+
+
   let savedMsg={
     promotionType,
     saved
