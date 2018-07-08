@@ -41,6 +41,7 @@ function addItemDetial(items,allItems) {
     selectItem.name=name;
     selectItem.price=price;
   }
+
   //   for (let item of allItems) {
   //     if (selectItem.id===item.id) {
   //       selectItem.name=item.name;
@@ -49,6 +50,7 @@ function addItemDetial(items,allItems) {
   //     }
   //   }
   // }
+
   console.info(items);
 }
 //计算商品小计
@@ -122,13 +124,17 @@ function getSavedMsgByBanjia(items,promotion) {
 }
 //判断是否是半价商品
 function isBanjiaItem(item,promotionItems) {
-  let banjia = false;
-  for (let promotionItem of promotionItems) {
-    if (item.id===promotionItem) {
-      banjia=true;
-      break;
-    }
-  }
+  let banjia = promotionItems.some((id)=>{
+    return item.id===id;
+  });
+
+  // for (let promotionItem of promotionItems) {
+  //   if (item.id===promotionItem) {
+  //     banjia=true;
+  //     break;
+  //   }
+  // }
+
   console.info(banjia);
   return banjia;
 }
