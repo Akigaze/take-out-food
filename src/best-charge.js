@@ -44,12 +44,27 @@ function calSubtotal(items) {
 }
 //计算优惠金额
 function getPromotionMsg(items,promotions) {
-
+  let SavedMsgList=getSavedMsgList(items,promotions);
+  let promotionMsg=selectTheBestPromotion(SavedMsgList);
+  console.info(promotionMsg);
   return promotionMsg;
 }
 //计算每种优惠方式的优惠金额
 function getSavedMsgList(items,promotions) {
-
+  let saveMsgList=[]
+  for (let promotion of promotions) {
+    let savedMsg=null;
+    switch (promotion.type) {
+      case "满30减6元":
+        savedMsg=getSavedMsgByManjian(items,promotion);
+        break;
+      case "指定菜品半价":
+        savedMsg=getSavedMsgByBanjia(items,promotion)
+        break;
+    }
+    saveMsgList.push(savedMsg);
+  }
+  console.info(saveMsgList);
   return saveMsgList;
 }
 //计算满减的优惠金额
@@ -103,7 +118,14 @@ function isBanjiaItem(item,promotionItems) {
 }
 //选出最优的优惠
 function selectTheBestPromotion(savedMsgList) {
-
+  let promotionMsg={};
+  let bestSaved=0;
+  for (let i = 0; i < savedMsgList.length; i++) {
+    if(savedMsgList[i].saved>bestSaved){
+      bestSaved=savedMsgList[i].saved;
+      promotionMsg=savedMsgList[i];
+    }
+  }
   return promotionMsg;
 }
 //计算订单总价
