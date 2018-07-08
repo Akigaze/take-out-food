@@ -29,7 +29,6 @@ function countItems(selectedItems){
   //   items.push(item);
   // }
 
-  console.info(items);
   return items;
 }
 //添加菜品详情
@@ -50,21 +49,17 @@ function addItemDetial(items,allItems) {
   //     }
   //   }
   // }
-
-  console.info(items);
 }
 //计算商品小计
 function calSubtotal(items) {
   items.forEach((item)=>{
     item.subtotal=item.count*item.price;
   });
-  console.info(items);
 }
 //计算优惠金额
 function getPromotionMsg(items,promotions) {
   let SavedMsgList=getSavedMsgList(items,promotions);
   let promotionMsg=selectTheBestPromotion(SavedMsgList);
-  console.info(promotionMsg);
   return promotionMsg;
 }
 //计算一种优惠方式的优惠金额
@@ -90,7 +85,7 @@ function getSavedMsgList(items,promotions) {
   //   let savedMsg=getSavedMsg(items,promotion)
   //   savedMsgList.push(savedMsg);
   // }
-  console.info(savedMsgList);
+
   return savedMsgList;
 }
 //计算满减的优惠金额
@@ -109,7 +104,7 @@ function getSavedMsgByManjian(items,promotion) {
     promotionType,
     saved
   };
-  console.info(savedMsg);
+
   return savedMsg;
 }
 //计算半价商品的优惠金额
@@ -130,12 +125,11 @@ function getSavedMsgByBanjia(items,promotion) {
     promotionType,
     saved
   };
-  console.info(savedMsg);
+
   return savedMsg;
 }
 //判断是否是半价商品
 function isBanjiaItem(item,promotionItems) {
-
   let banjia = promotionItems.some((id)=>{
     return item.id===id;
   });
@@ -147,7 +141,6 @@ function isBanjiaItem(item,promotionItems) {
   //   }
   // }
 
-  console.info(banjia);
   return banjia;
 }
 //选出最优的优惠
@@ -177,7 +170,7 @@ function calTotal(items,promotionMsg) {
   if (promotionMsg!==null) {
     total-=promotionMsg.saved;
   }
-  console.info(total);
+
   return total;
 }
 //封装订单对象
@@ -187,7 +180,7 @@ function generateOrder(items,promotionMsg,total) {
     promotionMsg,
     total
   };
-  console.info(order);
+
   return order;
 }
 //输出订单
@@ -204,6 +197,6 @@ function outputOrder(order) {
   }
   orderString+="总计："+order.total+"元\n";
   orderString+="===================================";
-  console.info(orderString)
+
   return orderString;
 }
