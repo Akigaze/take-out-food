@@ -15,42 +15,42 @@ function calSubtotal(items) {
 
 }
 //计算优惠金额
-function getPromotionDetial(items,promotions) {
+function getPromotionMsg(items,promotions) {
 
-  return promotionDetail;
+  return promotionMsg;
 }
 //计算每种优惠方式的优惠金额
-function getPromotionDetailList(items,promotions) {
+function getPromotionMsgList(items,promotions) {
 
-  return promotionDetailList;
+  return promotionMsgList;
 }
 //计算满减的优惠金额
-function calSavedByManjian(items,promotion) {
+function getSavedMsgByManjian(items,promotion) {
 
-  return savedDetail;
+  return savedMsg;
 }
 //计算半价商品的优惠金额
-function calSavedByBanjia(items,promotion) {
+function getSavedMsgByBanjia(items,promotion) {
 
-  return savedDetail;
+  return savedMsg;
 }
 //判断是否是半价商品
-function isBanjiaItem(item,items) {
+function isBanjiaItem(item,promotionItems) {
 
   return banjia;
 }
 //选出最优的优惠
-function getTheBestPromotion(promotionDetailList) {
+function selectTheBestPromotion(promotionMsgList) {
 
-  return promotionDetail;
+  return promotionMsg;
 }
 //计算订单总价
-function calTotal(items,promotionDetail) {
+function calTotal(items,promotionMsg) {
 
   return total;
 }
 //封装订单对象
-function generateOrder(items,promotionDetail,total) {
+function generateOrder(items,promotionMsg,total) {
 
   return order;
 }
