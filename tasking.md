@@ -102,8 +102,8 @@ output:
       promotionMsg
       total
     }
-#6 输出订单 outputOrder
+#6 输出订单内容 outputOrder
 input:
     order
 output:
-    console.log(orderString: String)
+    orderString: String
