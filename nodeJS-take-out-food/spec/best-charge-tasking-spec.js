@@ -23,8 +23,8 @@ describe('Tasking #2', function () {
   it('Object Array should add attribute name and price by function addItemDetial', function() {
     let inputs = ["ITEM0013 x 4", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
+    let idCountList = countItems(inputs);
+    let items=addItemDetial(idCountList,loadAllItems());
 
     let expected = [
       {id:'ITEM0013',count:4,name:'肉夹馍',price:6.00},
@@ -39,9 +39,9 @@ describe('Tasking #3', function () {
   it('get attribute subtotal of each kind of items by function calSubtotal', function() {
     let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
 
     let expected = [18,12,8];
 
@@ -55,9 +55,9 @@ describe('Tasking #4', function () {
   it('#4.1.2.1# is a item in promotion 指定菜品半价 by function isBanjiaItem', function() {
     let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
     const promotionItems=loadPromotions()[1].items;
 
     let expected = [true,false,true];
@@ -71,9 +71,9 @@ describe('Tasking #4', function () {
   it('#4.1.2# saved message in promotion 指定菜品半价 by function getSavedMsgByBanjia', function() {
     let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
     const promotion=loadPromotions()[1];
     let result=getSavedMsgByBanjia(items,promotion);
 
@@ -85,9 +85,9 @@ describe('Tasking #4', function () {
   it('#4.1.1# saved message in promotion 满30减6元 by function getSavedMsgByManjian', function() {
     let inputs = ["ITEM0013 x 4", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
     const promotion=loadPromotions()[0];
     let result=getSavedMsgByManjian(items,promotion);
 
@@ -99,9 +99,9 @@ describe('Tasking #4', function () {
   it('#4# promotion message of order should be gotten by function getPromotionMsg', function() {
     let inputs = ["ITEM0001 x 1", "ITEM0013 x 2", "ITEM0022 x 1"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
     let result=getPromotionMsg(items,loadPromotions());
 
     let expected = {promotionType:'指定菜品半价(黄焖鸡，凉皮)',saved:13};
@@ -128,9 +128,9 @@ describe('Tasking #5', function () {
   it('the total of order must be 24 by function calTotal', function() {
     let inputs = ["ITEM0013 x 4"];
 
-    let items = countItems(inputs);
-    addItemDetial(items,loadAllItems());
-    calSubtotal(items);
+    let idCountList = countItems(inputs);
+    let detialItems=addItemDetial(idCountList,loadAllItems());
+    let items=calSubtotal(detialItems);
     let promotionMsg=getPromotionMsg(items,loadPromotions());
     let result=calTotal(items,promotionMsg);
 
